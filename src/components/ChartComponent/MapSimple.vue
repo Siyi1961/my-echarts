@@ -7,32 +7,28 @@
 <script >
 //先要导入依赖的实例
 import echarts from 'echarts'
+import china from 'echarts/map/json/china'
 export default {
-  name: 'BarBackgroundChart',
+  name: 'MapSimple',
   data() {
     return {
       option:{
-        xAxis: {
-            type: 'category',
-            data: ['Mon', 'Tue', 'Wed', 'Thu', 'Fri', 'Sat', 'Sun']
-        },
-        yAxis: {
-            type: 'value'
-        },
-        series: [{
-            data: [120, 200, 150, 80, 70, 110, 130],
-            type: 'bar',
-            showBackground: true,
-            backgroundStyle: {
-                color: 'rgba(220, 220, 220, 0.8)'
+        series : [
+            {
+                name: 'Map',
+                type: 'map',
+                map: 'china',
+                data:[{name: '江苏',value: Math.round(Math.random()*1000), selected:true},
+                      {name: '天津',value: Math.round(Math.random()*1000)}]
             }
-        }]
-      }
+        ]
+      } 
     }
   },
   //挂载前初始化echarts实例
   mounted:function() {
     var myChart = echarts.init(document.getElementById('chart'))
+    echarts.registerMap('china',china)
     myChart.setOption(this.option)
   }
 }

@@ -95,6 +95,6 @@ export default {
 #chart {
   width: 100%; 
   height: 500px; 
-  border:1px solid rgb(180,180,180)
+  /* border:1px solid rgb(180,180,180) */
 }
 </style>

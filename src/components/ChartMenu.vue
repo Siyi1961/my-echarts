@@ -1,9 +1,10 @@
 <template>
-  <div class="hello" id="left-chart-nav">
-   <div v-for="(item, index) in ChartsType" :key="index" style="margin-left:9px;">
+  <div id="left-chart-nav">
+   <div style="color:#009688; margin:12px; font-size: 36px;">ECHART</div>
+   <div v-for="(item, index) in ChartsType" :key="index" :id="'item'+index" style="margin-left:9px;" @mouseover="onDplOver($event)" @mouseout="onDplOut($event)">
      <p>{{ item.text }}</p>
-     <ul>
-        <router-link :to="'/'+i.name" tag="li" v-for="(i, key) in item.children" :key="key">
+     <ul :id="'ul'+index" style="display: none">
+        <router-link :to="'/chart/'+i.name" tag="li" v-for="(i, key) in item.children" :key="key">
           <abbr v-if="i.text.length > 6" :title="i.text">{{ i.text.substring(0,6)+'...' }}</abbr>
           <span v-else>{{ i.text }}</span>
         </router-link>
@@ -19,10 +20,23 @@ export default {
     return {
       ChartsType: [
         {name:"line", text:"折线图",children:[{name:"line-simple", text:"Basic Line Chart"}, {name:"area-basic", text:"Basic Area Chart"}]},
-        {name:"bar", text:"柱状图",children:[{name:"bar-background", text:"Bar with Background"}]},
-        {name:"pie", text:"饼图",children:[{name:"pie-custom", text:"Customized Pie"}]},
-        {name:"scatter", text:"散点图",children:[{name:"scatter-simple", text:"Basic Scatter Chart"}]}
+        {name:"bar", text:"柱状图",children:[{name:"bar-simple", text:"Basic Bar Chart"},{name:"bar-background", text:"Bar with Background"}]},
+        {name:"pie", text:"饼图",children:[{name:"pie-simple", text:"Basic Pie Chart"},{name:"pie-custom", text:"Customized Pie"}]},
+        {name:"scatter", text:"散点图",children:[{name:"scatter-simple", text:"Basic Scatter Chart"}]},
+        {name:"map", text:"地图",children:[{name:"map-simple", text:"Basic Map Chart"}]},
+        {name:"radar", text:"雷达图",children:[{name:"radar-simple", text:"Basic Radar Chart"}]},
+        {name:"funnel", text:"漏斗图",children:[{name:"funnel-simple",text:"Basic Funnel Chart"}]}
       ]
+    }
+  },
+  methods: {
+    onDplOver(event){
+        let ul = event.currentTarget.childNodes[1];
+        ul.style.display = "block";
+    },
+    onDplOut(event){
+        let ul = event.currentTarget.childNodes[1];
+        ul.style.display = "none";
     }
   }
 }
@@ -35,11 +49,11 @@ export default {
     top: 0;
     bottom: 0;
     left: 0;
-    padding-top: 51px;
     width: 180px;
     background-color: #293c55;
     overflow-y: hidden;
     color: white;
+    overflow-y: auto;
 }
 #left-chart-nav li {
     color: #ccc;

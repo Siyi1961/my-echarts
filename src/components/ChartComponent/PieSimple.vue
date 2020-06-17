@@ -8,24 +8,29 @@
 //先要导入依赖的实例
 import echarts from 'echarts'
 export default {
-  name: 'BarBackgroundChart',
+  name: 'LineSimple',
   data() {
     return {
       option:{
-        xAxis: {
-            type: 'category',
-            data: ['Mon', 'Tue', 'Wed', 'Thu', 'Fri', 'Sat', 'Sun']
-        },
-        yAxis: {
-            type: 'value'
+        tooltip: {
+            trigger: 'item',
+            formatter: '{a} <br/>{b} : {c} ({d}%)'
         },
         series: [{
-            data: [120, 200, 150, 80, 70, 110, 130],
-            type: 'bar',
-            showBackground: true,
-            backgroundStyle: {
-                color: 'rgba(220, 220, 220, 0.8)'
-            }
+          type: 'pie',
+          data: [{
+                    value: 100,
+                    name: 'A'
+                }, {
+                    value: 200,
+                    name: 'B'
+                }, {
+                    value: 300,
+                    name: 'C'
+                }, {
+                    value: 400,
+                    name: 'D'
+                }]
         }]
       }
     }
