@@ -1,6 +1,6 @@
 <template>
   <div id="left-chart-nav">
-   <div style="color:#009688; margin:12px; font-size: 36px;">ECHART</div>
+   <router-link tag="div" to="/" style="color:#009688; margin:12px; font-size: 36px;">ECHART</router-link>
    <div v-for="(item, index) in ChartsType" :key="index" :id="'item'+index" style="margin-left:9px;" @mouseover="onDplOver($event)" @mouseout="onDplOut($event)">
      <p>{{ item.text }}</p>
      <ul :id="'ul'+index" style="display: none">
@@ -19,7 +19,7 @@ export default {
   data() {
     return {
       ChartsType: [
-        {name:"line", text:"折线图",children:[{name:"line-simple", text:"Basic Line Chart"}, {name:"area-basic", text:"Basic Area Chart"}]},
+        {name:"line", text:"折线图",children:[{name:"line-simple", text:"Basic Line Chart"}, {name:"area-basic", text:"Basic Area Chart"},{name:"line-smooth",text:"Smoothed Line Chart"},{name:"line-stack",text:"Stacked Line Chart"}]},
         {name:"bar", text:"柱状图",children:[{name:"bar-simple", text:"Basic Bar Chart"},{name:"bar-background", text:"Bar with Background"}]},
         {name:"pie", text:"饼图",children:[{name:"pie-simple", text:"Basic Pie Chart"},{name:"pie-custom", text:"Customized Pie"}]},
         {name:"scatter", text:"散点图",children:[{name:"scatter-simple", text:"Basic Scatter Chart"}]},

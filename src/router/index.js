@@ -47,6 +47,12 @@ Vue.use(VueRouter)
       path: "funnel-simple",
       component:() => import("@/components/ChartComponent/FunnelSimple")
     },{
+      path: "line-smooth",
+      component:() => import("@/components/ChartComponent/SmoothedLine")
+    },{
+      path: "line-stack",
+      component:() => import("@/components/ChartComponent/StackedLine")
+    },{
       path:"/chart",
       redirect:"/chart/line-simple"
     }]
