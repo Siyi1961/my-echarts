@@ -1,6 +1,6 @@
 <template>
   <div id="left-chart-nav">
-   <router-link tag="div" to="/" style="color:#009688; margin:12px; font-size: 36px;">ECHART</router-link>
+   <router-link tag="div" to="/" style="color:#009688; margin:12px; font-size: 36px;cursor: pointer;">ECHART</router-link>
    <div v-for="(item, index) in ChartsType" :key="index" :id="'item'+index" style="margin-left:9px;" @mouseover="onDplOver($event)" @mouseout="onDplOut($event)">
      <p>{{ item.text }}</p>
      <ul :id="'ul'+index" style="display: none">
@@ -49,7 +49,8 @@ export default {
     top: 0;
     bottom: 0;
     left: 0;
-    width: 180px;
+    width: 180px; 
+    /* width:18%; */
     background-color: #293c55;
     overflow-y: hidden;
     color: white;
@@ -64,6 +65,7 @@ export default {
     transition: 0.5s;
    /*  height: 54px; */
     padding: 10px 0 10px 20px;
+    cursor: pointer;
 }
 h3 {
   margin: 40px 0 0;

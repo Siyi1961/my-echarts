@@ -38,7 +38,7 @@
         </g>
     </svg>
     </div>
-    <router-link to="/chart" tag="p" style="top:45%;"> {{ "示例" }} </router-link>
+    <router-link to="/chart" tag="p" style="top:45%; cursor: pointer;"> {{ "示例" }} </router-link>
   </div>
 </template>
 
